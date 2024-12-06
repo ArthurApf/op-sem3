@@ -6,8 +6,10 @@
   <a-scene>
     <a-assets>
       <img id="espaco" src="./textures/space.jpg" />
-      <a-asset-item id="omni-man" src="./assets/omni_man_fortnite/scene.gltf"></a-asset-item>
+      <a-asset-item id="omni-man" src="./assets/superman/scene.gltf"></a-asset-item>
       <a-asset-item id="buraco-negro" src="./assets/black_hole/scene.gltf"></a-asset-item>
+      <a-entity id="laser" geometry="primitive: cylinder; height: 0.1; radius: 0.05;" material="color: red; opacity: 0.7;" position="0 2 -10" visible="false"></a-entity>
+      <a-entity id="bola-gelo" geometry="primitive: sphere; radius: 0.3;" material="color: lightblue;" position="0 2 -10" visible="false"></a-entity>
     </a-assets>
 
     <a-sky src="#espaco"></a-sky>
@@ -23,19 +25,71 @@
 
     <a-entity 
       gltf-model="#omni-man" 
-      scale="0.1 0.1 0.1" 
+      scale="1 1 1" 
       position="0 2 -10" 
       rotation="0 0 0"
       look-at="#buraco-negro"
-      animation="property: position; to: 0 2.5 -10; dur: 3000; easing: easeInOutSine; dir: alternate; loop: true">
+      animation="property: position; to: 0 2.5 -10; dur: 3000; easing: easeInOutSine; dir: alternate; loop: true"
+      id="superman">
     </a-entity>
 
     <a-entity
       camera
       position="0 2 5"
       wasd-controls="acceleration: 500"
-      look-controls="pointerLockEnabled: true">
+      look-controls="pointerLockEnabled: true"
+      cursor="rayOrigin: mouse">
     </a-entity>
+
+    <script>
+      // Selecionando os elementos
+      const superman = document.querySelector("#superman");
+      const laser = document.querySelector("#laser");
+      const bolaGelo = document.querySelector("#bola-gelo");
+
+      // Função para disparar o laser
+      function atirarLaser() {
+        laser.setAttribute("visible", "true");
+        laser.setAttribute("position", superman.getAttribute("position"));
+        laser.setAttribute("animation", {
+          property: "position",
+          to: "0 2 -30",
+          dur: 1000,
+          easing: "easeInOutSine"
+        });
+
+        // Ocultar laser após o disparo
+        setTimeout(() => {
+          laser.setAttribute("visible", "false");
+        }, 1000);
+      }
+
+      // Função para disparar a bola de gelo
+      function atirarBolaGelo() {
+        bolaGelo.setAttribute("visible", "true");
+        bolaGelo.setAttribute("position", superman.getAttribute("position"));
+        bolaGelo.setAttribute("animation", {
+          property: "position",
+          to: "0 2 -30",
+          dur: 1000,
+          easing: "easeInOutSine"
+        });
+
+        // Ocultar bola de gelo após o disparo
+        setTimeout(() => {
+          bolaGelo.setAttribute("visible", "false");
+        }, 1000);
+      }
+
+      // Detectando os cliques do mouse
+      document.querySelector("a-scene").addEventListener("click", (event) => {
+        if (event.button === 0) { // Clique do botão esquerdo
+          atirarLaser();
+        } else if (event.button === 2) { // Clique do botão direito
+          atirarBolaGelo();
+        }
+      });
+    </script>
   </a-scene>
 </body>
 </html>
