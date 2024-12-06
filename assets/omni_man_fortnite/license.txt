@@ -1,0 +1,11 @@
+Model Information:
+* title:	Omni Man Fortnite
+* source:	https://sketchfab.com/3d-models/omni-man-fortnite-4203fb581ef0499a82fb2db5d9f96744
+* author:	Swimknot19 (https://sketchfab.com/RafaMario)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Omni Man Fortnite" (https://sketchfab.com/3d-models/omni-man-fortnite-4203fb581ef0499a82fb2db5d9f96744) by Swimknot19 (https://sketchfab.com/RafaMario) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

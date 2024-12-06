@@ -1,0 +1,41 @@
+<html>
+<head>
+  <script src="https://aframe.io/releases/1.6.0/aframe.min.js"></script>
+</head>
+<body>
+  <a-scene>
+    <a-assets>
+      <img id="espaco" src="./textures/space.jpg" />
+      <a-asset-item id="omni-man" src="./assets/omni_man_fortnite/scene.gltf"></a-asset-item>
+      <a-asset-item id="buraco-negro" src="./assets/black_hole/scene.gltf"></a-asset-item>
+    </a-assets>
+
+    <a-sky src="#espaco"></a-sky>
+
+    <a-entity 
+      id="buraco-negro"
+      gltf-model="#buraco-negro"
+      position="0 2 -30" 
+      scale="120 120 120"   
+      animation__rotation="property: rotation; to: 0 360 0; loop: true; dur: 20000; easing: linear"
+      animation__movement="property: position; to: 1 3 -30; dur: 6000; easing: easeInOutSine; dir: alternate; loop: true">
+    </a-entity>
+
+    <a-entity 
+      gltf-model="#omni-man" 
+      scale="0.1 0.1 0.1" 
+      position="0 2 -10" 
+      rotation="0 0 0"
+      look-at="#buraco-negro"
+      animation="property: position; to: 0 2.5 -10; dur: 3000; easing: easeInOutSine; dir: alternate; loop: true">
+    </a-entity>
+
+    <a-entity
+      camera
+      position="0 2 5"
+      wasd-controls="acceleration: 500"
+      look-controls="pointerLockEnabled: true">
+    </a-entity>
+  </a-scene>
+</body>
+</html>
